@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beyond The Limit</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#0f172a,#1e3a8a,#6366f1);
+color:white;
+}
+
+.navbar{
+background:white;
+padding:12px 20px;
+display:flex;
+justify-content:space-between;
+}
+
+.logo{color:#e53238;font-weight:bold;}
+
+.nav-links a{
+margin-left:10px;
+text-decoration:none;
+color:#333;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:#3b82f6;
+padding:10px;
+border-radius:10px;
+text-align:center;
+}
+
+.card img{width:100%}
+
+select{
+width:100%;
+padding:5px;
+margin-top:5px;
+}
+
+button{
+background:#6366f1;
+color:white;
+border:none;
+padding:8px;
+width:100%;
+margin-top:5px;
+}
+
+.cart{
+background:white;
+color:black;
+padding:15px;
+margin:20px;
+border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<div class="logo">Beyond The Limit</div>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="shorts.html">Shorts</a>
+<a href="jackets.html">Jackets</a>
+</div>
+</div>
+
+<center>
+<h1>Beyond The Limit</h1>
+<p>Push your limits. Wear your story.</p>
+</center>
+
+<div style="background:white;color:black;padding:20px;border-radius:10px;max-width:800px;margin:20px auto;">
+<h2>About Us</h2>
+
+<p>
+Beyond The Limit represents pushing limits and chasing dreams.
+<br><br>
+Created by a first-year college student from Imus, Cavite.
+</p>
+
+<hr>
+
+<p style="font-style:italic;">
+“I can do all things through Christ who strengthens me.”<br>
+— Philippians 4:13
+</p>
+</div>
+
+<h2 style="padding-left:20px;">Shirts</h2>
+
+<div class="products">
+
+<div class="card">
+<img src="https://highabovesociety.com/cdn/shop/files/image.jpg?v=1684951865">
+<p>Classic Shirt - ₱450</p>
+<select id="s1"><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+<button onclick="addToCart('Classic Shirt',450,'s1')">Add</button>
+</div>
+
+<div class="card">
+<img src="https://thecrescendobrand.com/cdn/shop/files/RISEBEYONDLIMITSGLOBETEEBACKBLACKCPPR.png?v=1712864958">
+<p>Street Tee - ₱500</p>
+<select id="s2"><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+<button onclick="addToCart('Street Tee',500,'s2')">Add</button>
+</div>
+
+<div class="card">
+<img src="https://img.gem.app/1809161916/1t/1758866266/tailored-originals-beyond-the-limit-t-shirt.jpg">
+<p>Minimal Tee - ₱480</p>
+<select id="s3"><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+<button onclick="addToCart('Minimal Tee',480,'s3')">Add</button>
+</div>
+
+</div>
+
+<div class="cart" id="cartBox">Cart is empty</div>
+
+<script>
+let cart=[];
+
+function addToCart(name,price,sizeId){
+let size=document.getElementById(sizeId).value;
+cart.push({name,price,size});
+updateCart();
+}
+
+function updateCart(){
+let box=document.getElementById("cartBox");
+box.innerHTML="";
+let total=0;
+
+cart.forEach(c=>{
+box.innerHTML+=`<div>${c.name} (${c.size}) - ₱${c.price}</div>`;
+total+=c.price;
+});
+
+box.innerHTML+=`<h3>Total: ₱${total}</h3>`;
+}
+</script>
+
+</body>
+</html>
